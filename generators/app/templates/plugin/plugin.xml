@@ -1,0 +1,25 @@
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+    id="<%= pluginName %>"
+    version="1.0.0">
+
+    <name><%= projectName %></name>
+    <description>BlackBerry 10 Community Contributed <%= projectName %> API</description>
+    <license>Apache 2.0</license>
+    <author><%= author %></author>
+    <keywords>blackberry,<%= projectName %>,cordova</keywords>
+    <repo>https://github.com/blackberry/WebWorks-Community-APIs.git</repo>
+    <issue>https://github.com/blackberry/WebWorks-Community-APIs/issues</issue>
+
+    <js-module src="www/client.js">
+        <clobbers target="cordova.plugins.<%= apiBase %>" />
+    </js-module>
+
+    <platform name="blackberry10">
+        <source-file src="src/blackberry10/index.js" />
+        <lib-file src="src/blackberry10/native/device/lib<%= projectName %>.so" arch="device"/>
+        <lib-file src="src/blackberry10/native/simulator/lib<%= projectName %>.so" arch="simulator"/>
+        <config-file target="www/config.xml" parent="/widget">
+            <feature name="<%= pluginName %>" value="<%= pluginName %>" />
+        </config-file>
+    </platform>
+</plugin>

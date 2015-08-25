@@ -1,0 +1,21 @@
+{
+  "name": "generator-cordova-plugin-bb10",
+  "version": "1.0.0",
+  "description": "Generator for BB10 Cordova Plugins",
+  "repository": {
+    "type": "git",
+    "url": "https://www.github.com/blackberry/generator-cordova-plugin-bb10.git"
+  },
+  "keywords": [
+    "yeoman-generator",
+    "blackberry10",
+    "cordova",
+    "plugin"
+  ],
+  "author": "Tim Windsor",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "lodash": "^3.10.0",
+    "yeoman-generator": "^0.20.2"
+  }
+}
