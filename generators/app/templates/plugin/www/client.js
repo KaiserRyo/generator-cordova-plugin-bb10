@@ -22,14 +22,13 @@ var _self = {},
 	// They make WebWorks function calls to the methods
 	// in the index.js of the Extension
 
-	// Simple Synchronous test function to get a string
-
-	function invokeCallback(callback, args) {
-    if (callback && typeof callback === "function") {
-        callback(args);
-    }
+function invokeCallBack(callback, args) {
+	if (callback && typeof callback === "function") {
+		callback(args);
+	}
 }
 
+	// Simple Synchronous test function to get a string
 
 	_self.<%= projectCamel %>Test = function (onSuccess, onFail) {
 		exec(function (result) {
