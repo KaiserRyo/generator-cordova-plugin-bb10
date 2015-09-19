@@ -23,27 +23,28 @@ var _self = {},
 	// in the index.js of the Extension
 
 	// Simple Synchronous test function to get a string
-	_self.<%= projectCamel %>Test = function () {
-		var result,
-			success = function (data, response) {
-				result = data;
-			},
-			fail = function (data, response) {
-				console.log("Error: " + data);
-			};
-		exec(success, fail, _ID, "<%= projectCamel %>Test", null);
-		return result;
+
+	function invokeCallback(callback, args) {
+    if (callback && typeof callback === "function") {
+        callback(args);
+    }
+}
+
+
+	_self.<%= projectCamel %>Test = function (onSuccess, onFail) {
+		exec(function (result) {
+			invokeCallback(onSuccess, result);
+		}, function(error) {
+			invokeCallback(onFail, error);
+		}, _ID, "<%= projectCamel %>Test", null);
 	};
-	_self.<%= projectCamel %>TestInput = function (input) {
-		var result,
-			success = function (data, response) {
-				result = data;
-			},
-			fail = function (data, response) {
-				console.log("Error: " + data);
-			};
-		exec(success, fail, _ID, "<%= projectCamel %>TestInput", { input: input });
-		return result;
+
+	_self.<%= projectCamel %>TestInput = function (input, onSuccess, onFail) {
+		exec(function (result) {
+			invokeCallback(onSuccess, result);
+		}, function(error) {
+			invokeCallback(onFail, error);
+		}, _ID, "<%= projectCamel %>TestInput", { input: input });
 	};
 
 	// Asynchronous with sending and returning a JSON object
