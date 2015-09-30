@@ -22,7 +22,7 @@ var _self = {},
 	// They make WebWorks function calls to the methods
 	// in the index.js of the Extension
 
-function invokeCallBack(callback, args) {
+function invokeCallback(callback, args) {
 	if (callback && typeof callback === "function") {
 		callback(args);
 	}
@@ -96,15 +96,13 @@ function invokeCallBack(callback, args) {
 	};
 
 	_self.<%= projectCamel %>StopThread = function (callback) {
-		var result,
 			success = function (data, response) {
-				result = data;
+				callback(data);
 			},
 			fail = function (data, response) {
 				console.log("Error: " + data);
 			};
 		exec(success, fail, _ID, "<%= projectCamel %>StopThread", null);
-		return result;
 	};
 
 module.exports = _self;
