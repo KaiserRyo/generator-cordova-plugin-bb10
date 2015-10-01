@@ -1,6 +1,6 @@
 {
   "name": "generator-cordova-plugin-bb10",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Generator for BB10 Cordova Plugins",
   "repository": {
     "type": "git",
