@@ -105,15 +105,12 @@ In most cases, we'll define success and fail inline.
 a simple Synchronous method call looks like this, in client.js:
 
 ```javascript
-_self.testInput = function (input) {
-	var result,
-		success = function (data, response) {
-			result = data;
-		},
-		fail = function (data, response) {
-			console.log("Error: " + data);
-		};
-	exec(success, fail, _ID, "test", { input: input });
+_self.testInput = function (input, onSuccess, onFail) {
+	exec(function (result) {
+		invokeCallback(onSuccess, result);
+	}, function(error) {
+		invokeCallback(onFail, error);
+	}, _ID, "test", { input: input });
 	return result;
 };
 ```
@@ -301,6 +298,8 @@ cordova.plugins.<%= apiBase %>.templateProperty = value;
 ```
 
 The following code defines a property called templateProperty, backed by the plugin method of the same name for setting or retrieving the value. The getter or setter could be removed to restrict what the property responds to.
+
+__Note that properties only work on BlackBerry 10. Avoid using these if you intend to do cross platform plugins.__
 
 ```javascript
 Object.defineProperty(_self, "templateProperty", {

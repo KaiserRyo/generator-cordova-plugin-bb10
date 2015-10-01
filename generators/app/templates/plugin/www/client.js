@@ -60,6 +60,8 @@ function invokeCallback(callback, args) {
 
 	// Define a property on the extension object
 	// Omit the getter or setter as needed to restrict the property
+	// ** Note that use of properties only works on BlackBerry 10
+	// ** Avoid if doing cross platform plugins
 	Object.defineProperty(_self, "<%= projectCamel %>Property", {
 		get: function () {
 			var result,
